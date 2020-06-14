@@ -1,44 +1,24 @@
 # README
 
-Docker template for Rails6 and PG.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Usage
+Things you may want to cover:
 
-```bash
-$ mkdir YOUR_REPOSITORY_NAME
-$ cd YOUR_REPOSITORY_NAME
-$ git clone git@github.com:harayama-developmer/template-docker-rails-6-postgresql.git .
-$ docker-compose build
-$ docker-compose run --rm web bundle exec rails new . --force --database=postgresql --skip-test --skip-git --skip-turbolinks # Remove --skip-turbolinks if necessary
-$ vi config/database.yml
+* Ruby version
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  port: <%= ENV.fetch('DATABASE_PORT') { 5432 } %>
+* System dependencies
 
-development:
-  <<: *default
-  database: app_development
-  username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
-  password: <%= ENV.fetch('DATABASE_PASSWORD') { 'password' } %>
-  host: <%= ENV.fetch('DATABASE_HOST') { 'localhost' } %>
+* Configuration
 
-test:
-  <<: *default
-  database: app_test
-  username: <%= ENV.fetch('DATABASE_USER') { 'root' } %>
-  password: <%= ENV.fetch('DATABASE_PASSWORD') { 'password' } %>
-  host: <%= ENV.fetch('DATABASE_HOST') { 'localhost' } %>
+* Database creation
 
-production:
-  <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+* Database initialization
 
-$ docker-compose run --rm web bundle exec rails db:create
-$ docker-compose run --rm web bin/yarn install
-$ docker-compose up
-```
+* How to run the test suite
 
-Finally access `http://localhost:3000` on your browser.
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

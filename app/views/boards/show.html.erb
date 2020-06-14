@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @board.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @board.description %>
+</p>
+
+<%= link_to 'Edit', edit_board_path(@board) %> |
+<%= link_to 'Back', boards_path %>
+
+<h2>コメント一覧</h2>
+
+<%- @comments.each do |comment| %>
+  <div>
+    <span><%= comment.name %></span>
+    <span><%= comment.created_at %></span>
+    <p><%= comment.content %></p>
+  </div>
+  <hr>
+<% end %>
+
+<p>コメントする</p>
+
+<%= form_with(model: [@board, @comment], local: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content%>
+    <%= form.text_field :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
